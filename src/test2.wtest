@@ -1,0 +1,23 @@
+import rodados.*
+import dependencias.*
+import pedidos.*
+import wollok.game.*
+
+describe "game"{
+	var miAutito = new Corsa(posicion = new Position(x=3,y=6))
+	method initialize(){
+		game.height(15)
+		game.width(15)
+	}
+}
+
+describe "etapa1" {
+	var cachito = new Corsa(color="Rojo")
+	var pedido = new Pedido(distancia=960, tiempo=8, pasajeros=4, coloresQueNo=["Azul","Negro"])
+	test "Velocidad Maxima"{
+		assert.equals(pedido.velocidadRequerida(), 120)
+	}
+	test "Satisface al Pedido"{
+		assert.that(pedido.autoQueSatisface(cachito))
+	}
+}
